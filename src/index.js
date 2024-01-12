@@ -3,30 +3,48 @@ import ReactDOM from 'react-dom/client';
 import css from './index.css';
 
 
+const books = [
+    {
+      id:1,
+      author: 'Jordan Moore',
+      title: 'Interesting Facts For Curious Minds',
+      img: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTQDVUAbWGdRUdIpM5ebXFKZydecDZ_Kua08-rqniCPTzQGyIrywU0fSc6fQ3lJUvZDpADm3yE5vkKd1z1W4tuMerA1qiZ-DggK_hZsyGE&usqp=CAE',
+    },
+    {
+      id:2,
+      author: 'James Clear',
+      title: 'Atomic Habits',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/81wgcld4wxL._AC_UL900_SR900,600_.jpg',
+    },
+  ];
+
+
 const BookList=()=>{
     return(
         <section className='bookList'>
-            <Book/>
-            <Book/>
-            <Book/>
-            <Book/>
+           {
+                
+            books.map((book)=>{
+
+            return <Book {...book}/>
+           })}
         </section>
     )
 };
 
-const Book=()=>{
+const Book=(props)=>{
+    const {img,title,author} = props;
+    console.log(props);
     return(
         <div className='book'>
-            <Image/>
-            <Title/>
-            <Author/>
+            <img src={img} alt={title}/>
+            <h3>{title}</h3> 
+            <h4>{author}</h4>
+          
         </div>
     );
 };
 
-const Image=()=><img src="https://images-na.ssl-images-amazon.com/images/I/81YkqyaFVEL._AC_UL900_SR900,600_.jpg" alt="" />;
-const Title=()=><h3>Atomic Habits</h3> ;
-const Author=()=> <h4>James Clear</h4> ;
 
 const root=ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BookList />);
