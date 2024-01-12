@@ -26,6 +26,8 @@ body{
     border-radius: 1rem;
     padding: 2rem;
     text-align: center;
+    width:500px;
+
   }
   .book img {
     width: 50%;
