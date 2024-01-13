@@ -28,21 +28,26 @@ const BookList=()=>{
                 
             books.map((book)=>{
 
-            return <Book {...book}/>
+            return <Book {...book} key={book.id}/>
            })}
         </section>
     )
 };
 
 const EventExample=()=>{
-    const handleFormInput = () => {
-        console.log('handle form input');
+    const handleFormInput = (e) => {
+        console.log('Name is: ' + e.target.name);
+        console.log('Value is: ' + e.target.value);
       };
       const handleButtonClick = () => {
         alert('handle button click');
       };
+      const handleFormSubmission = (e) => {
+        e.preventDefault();
+        console.log('Submitted!');
+      };
     return <section>
-        <form action="">
+        <form onSubmit={handleFormSubmission}>
             <h2>Form</h2>
             <input
             onChange={handleFormInput}
@@ -57,7 +62,7 @@ const EventExample=()=>{
 
 
 const Book=(props)=>{
-    const {img,title,author} = props;
+    const {img,title,author,id} = props;
     console.log(props);
     return(
         <div className='book'>
